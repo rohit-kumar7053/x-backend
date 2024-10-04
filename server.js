@@ -22,7 +22,8 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware to parse request bodies
-app.use(express.json()); // Parses JSON req.body 
+app.use(express.json({ limit: "5mb" })); // Parses JSON req.body 
+// Limit Shouldn't be to high to prevent DOS  
 app.use(express.urlencoded({ extended: true })); // Parses URL-encoded data
 app.use(cookieParser());
 
